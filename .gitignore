@@ -1,0 +1,29 @@
+# Ignore Terraform binary files
+*.tfstate
+*.tfstate.backup
+*.tfstate.tfbackup
+*.tfvars
+
+# Ignore files containing sensitive information
+*.tfvars.json
+*.tfplan
+
+# Ignore .terraform directories
+.terraform/
+.terraform
+
+# Ignore override files as they are usually used to override resources locally and so are not checked in
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore .tfstate files from Terraform 0.11 and earlier
+*.tf
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore the secret keys
+*.pem
