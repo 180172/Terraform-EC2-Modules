@@ -18,7 +18,7 @@ data "aws_ami" "amazon_linux_ami" {
 # AWS EC2 Instance Resource
 # --------------------------
 
-# Create an AWS EC2 instance with specified configuration.
+# Create an AWS EC2 instance with a specified configuration.
 resource "aws_instance" "Public_Ec2_Instances" {
   ami = data.aws_ami.amazon_linux_ami.id
   instance_type = var.instance_typ
@@ -30,7 +30,7 @@ resource "aws_instance" "Public_Ec2_Instances" {
   connection {
     type = "ssh"
     user = "ec2-user"
-    private_key = file("./Nginx_1.pem")
+    private_key = file(".<PEM-KEY-NAME>")
     host        = self.public_ip
   }
   
@@ -41,14 +41,14 @@ resource "aws_instance" "Public_Ec2_Instances" {
 
    # File Provisioning
   provisioner "file" {
-    source = "./Nginx_1.pem"
-    destination = "/tmp/Nginx_1.pem"
+    source = "./<.PEM Key>"
+    destination = "<Path-Where-You-Want-To-Store-.PEM-Key>"
   }
 
   # Remote Execution Provisioning
   provisioner "remote-exec" {
     inline = [ 
-      "sudo chmod 700 /tmp/Nginx_1.pem"
+      "sudo chmod 700 <.PEM-KEY>"
      ]
   }
 
